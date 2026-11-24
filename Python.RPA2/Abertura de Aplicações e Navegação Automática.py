@@ -1,14 +1,14 @@
-import pyautogui as posicaoAbriGoogle
-posicaoAbriGoogle.sleep(4)
+import pyautogui as automacao
 
-#print(posicaoAbriGoogle.position())
-posicaoAbriGoogle.moveTo(x=120, y=131)
-posicaoAbriGoogle.doubleClick(x=120, y=131)
 
-posicaoAbriGoogle.sleep(5)
+def main():
+    automacao.sleep(4)
+    # Ajuste as coordenadas ao atalho do navegador na sua área de trabalho.
+    automacao.doubleClick(x=120, y=131)
+    automacao.sleep(5)
+    automacao.write("https://www.facebook.com/")
+    automacao.press("enter")
 
-posicaoAbriGoogle.typewrite('https://www.facebook.com/')
 
-posicaoAbriGoogle.sleep(3)
-
-posicaoAbriGoogle.press('enter')
+if __name__ == "__main__":
+    main()

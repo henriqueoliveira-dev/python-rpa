@@ -241,7 +241,7 @@ git clone https://github.com/henriqueoliveira-dev/python-rpa.git
 ### 3. Acessar a pasta do projeto
 
 ```bash
-cd python-rpa
+cd python-rpa/Python.RPA3/extracao_cep_para_excel
 ```
 
 ### 4. Criar um ambiente virtual
@@ -278,7 +278,7 @@ Exemplo para consulta automatizada de múltiplos CEPs:
 python extracaocep03.py
 ```
 
-**Observação:** os comandos devem ser executados a partir da pasta que contém o arquivo Python. Alguns projetos também exigem arquivos de entrada, como planilhas Excel, configurados no caminho esperado pelo código.
+**Observação:** os comandos devem ser executados nesta pasta. Os scripts `extracao02.py` e `extracaocep03.py` precisam das dependências `pandas` e `openpyxl` (instale com `python -m pip install pandas openpyxl`). O script em lote espera um arquivo `CEP.xlsx` ao lado do próprio script, com uma aba `CEP` e coluna `CEP`; ele grava ou substitui a aba `Dados`. O arquivo de saída de `extracao02.py` é `endereco.xlsx` no diretório de execução.
 
 ---
 
@@ -299,5 +299,4 @@ Desenvolvimento de projetos práticos com Python, automação de processos (RPA)
 🔗 **GitHub:** [henriqueoliveira-dev](https://github.com/henriqueoliveira-dev)
 
 ---
-
 

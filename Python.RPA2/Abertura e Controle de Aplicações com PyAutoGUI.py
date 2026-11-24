@@ -1,27 +1,24 @@
-import pyautogui as posicaoAbriArquivos
-#O hotkey nos permite executar mais de uma tecla de atalho do windows, ou seja do teclado
-#Nesse caso é a mesma coisa que precionar Windows + R
-posicaoAbriArquivos.hotkey('win','r')
+import pyautogui as automacao
 
-posicaoAbriArquivos.sleep(0.1)
 
-posicaoAbriArquivos.typewrite('notepad')
+def main():
+    automacao.hotkey("win", "r")
+    automacao.sleep(0.5)
+    automacao.write("notepad")
+    automacao.press("enter")
+    automacao.sleep(1.5)
+    automacao.write("Aprendendo RPA, na pratica!!!")
+    automacao.sleep(1)
+    janela = automacao.getActiveWindow()
+    if janela is None:
+        print("Não foi possível identificar a janela ativa; ela não será fechada.")
+        return
+    janela.close()
+    # Confirma o diálogo de salvamento sem salvar o documento de exemplo.
+    automacao.sleep(0.5)
+    automacao.press("tab")
+    automacao.press("enter")
 
-posicaoAbriArquivos.press('enter')
 
-posicaoAbriArquivos.sleep(0.5)
-
-posicaoAbriArquivos.typewrite('Aprendendo RPA, na pratica!!!')
-
-posicaoAbriArquivos.sleep(1.5)
-#O getActive Windows permite pega a janela  que está ativa
-fecharjanelaNotpad = posicaoAbriArquivos.getActiveWindow()
-
-fecharjanelaNotpad.close()
-
-posicaoAbriArquivos.press('tab')
-
-posicaoAbriArquivos.sleep(1.6)
-
-posicaoAbriArquivos.press('enter')
-
+if __name__ == "__main__":
+    main()

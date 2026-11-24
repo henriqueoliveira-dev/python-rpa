@@ -1,19 +1,16 @@
-import pyautogui as posicaoMouse
-#Tempo de espera para o computador pensar
-posicaoMouse.sleep(2)
+import pyautogui as posicao_mouse
 
-#Mover o mouse
-posicaoMouse.moveTo(x=22, y=1002)
-#Cliancado com o botão start ou seja no botão do windows
-posicaoMouse.click(x=22, y=1002)
-#Tempo para o computador pensar
-posicaoMouse.sleep(4)
 
-posicaoMouse.moveTo(x=173, y=554)
-posicaoMouse.click(x=173, y=554)
+def main():
+    # As coordenadas variam conforme a resolução e a posição da barra de tarefas.
+    posicao_mouse.sleep(2)
+    posicao_mouse.moveTo(x=22, y=1002)
+    posicao_mouse.click(x=22, y=1002)
+    posicao_mouse.sleep(4)
+    posicao_mouse.moveTo(x=173, y=554)
+    posicao_mouse.click(x=173, y=554)
+    print(posicao_mouse.position())
 
-#Colsutando execel no buscado do windows
-#posicaoMouse.typewrite("execel")
 
-print(posicaoMouse.position())
-
+if __name__ == "__main__":
+    main()
