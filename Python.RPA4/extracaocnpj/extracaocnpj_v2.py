@@ -1,99 +1,75 @@
-
 import http.client
 import json
+import re
+from pathlib import Path
+
 import pandas as pd
 
 
+def limpar_cnpj(cnpj):
+    digitos = re.sub(r"\D", "", str(cnpj))
+    if len(digitos) != 14:
+        raise ValueError("O CNPJ deve conter exatamente 14 dígitos.")
+    return digitos
+
+
 def obter_dados_empresa_por_cnpj(cnpj):
-
-    conexao = http.client.HTTPSConnection("www.receitaws.com.br")
-
-    conexao.request("GET", f"/v1/cnpj/{cnpj}")
-
-    resposta = conexao.getresponse()
-
-    print(f"Status da Resposta HTTP: {resposta.status}")
-
-    if resposta.status != 200:
-        conexao.close()
-        return {
-            "status": "ERROR",
-            "message": f"Resposta HTTP com status {resposta.status}"
-        }
-
-    dados = resposta.read()
-
-    conexao.close()
-
+    cnpj = limpar_cnpj(cnpj)
+    conexao = http.client.HTTPSConnection("www.receitaws.com.br", timeout=15)
     try:
-        empresa = json.loads(dados.decode("utf-8"))
-
-        print(f"Empresa decodificada: {empresa}")
-
+        conexao.request("GET", f"/v1/cnpj/{cnpj}")
+        resposta = conexao.getresponse()
+        if resposta.status != 200:
+            return {"status": "ERROR", "message": f"Resposta HTTP {resposta.status}."}
+        empresa = json.loads(resposta.read().decode("utf-8"))
+        if not isinstance(empresa, dict):
+            return {"status": "ERROR", "message": "Resposta da API em formato inesperado."}
         return empresa
-
-    except json.JSONDecodeError as e:
-
-        print(f"Erro na decodificação do JSON: {str(e)}")
-
-        return {
-            "status": "ERROR",
-            "message": "Erro na decodificação do JSON."
-        }
+    except (OSError, http.client.HTTPException, json.JSONDecodeError) as erro:
+        return {"status": "ERROR", "message": f"Falha na consulta: {erro}"}
+    finally:
+        conexao.close()
 
 
 def tratar_dados_aninhados(dados):
-
-    if "atividade_principal" in dados:
-        dados["atividade_principal"] = "; ".join(
-            ativ["text"] for ativ in dados["atividade_principal"]
-        )
-
-    if "atividades_secundarias" in dados:
-        dados["atividades_secundarias"] = "; ".join(
-            ativ["text"] for ativ in dados["atividades_secundarias"]
-        )
-
-    if "qsa" in dados:
+    dados = dict(dados)
+    for campo in ("atividade_principal", "atividades_secundarias"):
+        itens = dados.get(campo)
+        if isinstance(itens, list):
+            dados[campo] = "; ".join(
+                str(item.get("text", "")) for item in itens if isinstance(item, dict)
+            )
+    qsa = dados.get("qsa")
+    if isinstance(qsa, list):
         dados["qsa"] = "; ".join(
-            f"{q['nome']} - {q.get('qual', '')}"
-            for q in dados["qsa"]
+            f"{item.get('nome', '')} - {item.get('qual', '')}"
+            for item in qsa if isinstance(item, dict)
         )
-
-    if "extra" in dados:
-        dados["extra"] = str(dados["extra"])
-
-    if "simples" in dados:
-        dados["simples"] = str(dados["simples"])
-
-    if "simei" in dados:
-        dados["simei"] = str(dados["simei"])
-
-    if "billing" in dados:
-        dados["billing"] = str(dados["billing"])
-
+    for campo in ("extra", "simples", "simei", "billing"):
+        if isinstance(dados.get(campo), (dict, list)):
+            dados[campo] = json.dumps(dados[campo], ensure_ascii=False)
     return dados
 
-    
-def salvar_dados_empresa_excel(dados_empresa, nome_arquivo="dados_empresa.xlsx"):
 
+def salvar_dados_empresa_excel(dados_empresa, nome_arquivo="dados_empresa.xlsx"):
     if dados_empresa.get("status") == "ERROR":
         print(dados_empresa.get("message", "Erro desconhecido."))
-        return
+        return False
+    caminho = Path(nome_arquivo).expanduser()
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame([tratar_dados_aninhados(dados_empresa)]).to_excel(caminho, index=False)
+    print(f"Dados da empresa salvos com sucesso em: {caminho}")
+    return True
 
-    dados_empresa = tratar_dados_aninhados(dados_empresa)
 
-    dataframe = pd.DataFrame([dados_empresa])
+def main():
+    cnpj_exemplo = "33157312000162"
+    try:
+        dados_empresa = obter_dados_empresa_por_cnpj(cnpj_exemplo)
+        salvar_dados_empresa_excel(dados_empresa)
+    except (ValueError, OSError) as erro:
+        print(f"Não foi possível processar o CNPJ: {erro}")
 
-    dataframe.to_excel(
-        r"C:\Users\Henrique Oliveira\OneDrive\Documentos\Projeto-RPA\dados_empresa.xlsx",
-        index=False
-    )
 
-    print(f"Dados da empresa salvos com sucesso em: {nome_arquivo}")
-
-cnpj_exemplo = "33157312000162"
-
-dados_empresa = obter_dados_empresa_por_cnpj(cnpj_exemplo)
-
-salvar_dados_empresa_excel(dados_empresa)
+if __name__ == "__main__":
+    main()

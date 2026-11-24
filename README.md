@@ -47,18 +47,17 @@ Outras bibliotecas e ferramentas serão adicionadas ao repositório conforme os 
 ## 📂 Estrutura
 
 ```text
-PythonRPA/
-│
-├── .gitignore
-├── README.md
-│
-├── Controle do Mouse com PyAutoGUI.py
-├── Abertura de Aplicações e Navegação Automática.py
-├── Abertura e Controle de Aplicações com PyAutoGUI.py
-└── Automação de Aplicações com Menu de Seleção.py
+python-rpa/
+├── Python.RPA1/importcao web/       # Selenium e planilhas Excel
+├── Python.RPA2/                    # Exemplos PyAutoGUI
+├── Python.RPA3/extracao_cep_para_excel/
+│   ├── extracao01.py
+│   ├── extracao02.py
+│   └── extracaocep03.py
+└── Python.RPA4/extracaocnpj/       # Exemplos de consulta CNPJ
 ```
 
-A estrutura será atualizada conforme novos projetos de automação forem adicionados.
+Cada diretório contém exemplos independentes; consulte seu README e ajuste os arquivos de entrada/caminhos antes de executar.
 
 ---
 

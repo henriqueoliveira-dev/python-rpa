@@ -19,7 +19,7 @@ Desenvolver soluções automatizadas capazes de consultar informações empresar
 Aplicação responsável por realizar consultas individuais de CNPJ utilizando a API da ReceitaWS.
 
 **Funcionalidades:**
-- Recebimento de um CNPJ para consulta.
+- Consulta individual de um CNPJ de exemplo definido no próprio script.
 - Requisição HTTP utilizando `http.client`.
 - Comunicação segura via HTTPS.
 - Recebimento e leitura da resposta da API.
@@ -83,16 +83,13 @@ A disponibilidade dos campos depende dos dados retornados pela API.
 ```text
 Python.RPA4/
 │
+├── README.md
 └── extracaocnpj/
     │
     ├── extracaocnpj_v1.py
     ├── extracaocnpj_v2.py
-    ├── extracaocnpj_v3.py
-    │
-    └── README.md
+    └── extracaocnpj_v3.py
 ```
-
-*Observação: ajuste os nomes dos arquivos conforme os nomes reais das suas três aplicações.*
 
 ## Instalação e Configuração
 
@@ -150,7 +147,7 @@ Projeto-RPA/
 └── dados_empresa.xlsx
 ```
 
-O caminho de armazenamento pode ser configurado diretamente no código.
+O script `extracaocnpj_v2.py` grava por padrão `dados_empresa.xlsx` no diretório de execução; é possível passar outro nome ao chamar a função `salvar_dados_empresa_excel`. O script em lote espera `CNPJ.xlsx` ao lado do arquivo Python, com uma aba `CNPJ` e coluna `CNPJ`, e grava ou substitui a aba `Dados`.
 
 ## Tratamento de Erros
 
