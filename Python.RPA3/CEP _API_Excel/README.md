@@ -1,108 +1,143 @@
-# 🤖 Python RPA — Automação de Processos
+# 🤖 Python RPA — Automação de Processos com Python
 
-Repositório dedicado ao desenvolvimento de projetos, exercícios e estudos de **RPA (Robotic Process Automation)** utilizando Python.
+> Transformando processos manuais e repetitivos em automações com Python.
 
-O objetivo é desenvolver automações capazes de executar tarefas repetitivas, controlar aplicações, manipular arquivos e interagir com sistemas de forma automatizada.
+Este repositório reúne minha evolução prática no desenvolvimento de **soluções de automação utilizando Python**, explorando diferentes formas de automatizar tarefas, manipular dados, integrar APIs e interagir com aplicações web e desktop.
+
+O objetivo é transformar tarefas repetitivas em processos mais organizados, rápidos e eficientes, aplicando conceitos de **RPA (Robotic Process Automation)** no desenvolvimento de projetos práticos.
+
+---
+
+## 🚀 Sobre o projeto
+
+O repositório acompanha minha evolução no aprendizado de automação com Python, desde scripts simples até automações envolvendo diferentes tecnologias e etapas de um processo.
+
+Entre os principais conhecimentos trabalhados estão:
+
+- 🐍 Python
+- 🤖 RPA
+- 🌐 Automação Web
+- 🖥️ Automação Desktop
+- 📊 Excel
+- 🔗 Consumo de APIs
+- 🌐 Selenium
+- 🖱️ PyAutoGUI
+- 📄 OpenPyXL
+- 🔄 Manipulação e processamento de dados
+
+---
+
+## 📂 Organização do repositório
+
+O conteúdo está organizado por etapas de aprendizado:
+
+```text
+PythonRPA/
+│
+├── Python.RPA1/
+│   └── Automação Web + Excel
+│
+├── Python.RPA2/
+│   └── Automação Desktop
+│
+├── Python.RPA3/
+│   └── CEP + API + Excel
+│
+├── Python.RPA4/
+│   └── CNPJ + API + Excel
+│
+└── Python.RPA5/
+    └── Automação de Formulário Web
+```
+
+Cada etapa possui seus próprios arquivos e documentação, permitindo acompanhar a evolução dos projetos de forma organizada.
+
+---
+
+## 🧠 Tecnologias e ferramentas
+
+### Linguagem
+
+- Python
+
+### Automação Web
+
+- Selenium
+- WebDriver
+- XPath
+- Localizadores `By`
+
+### Automação Desktop
+
+- PyAutoGUI
+
+### Manipulação de dados
+
+- OpenPyXL
+- Excel
+- Processamento de arquivos
+
+### Integrações
+
+- APIs REST
+- Requisições HTTP
+- Tratamento de respostas
+
+---
+
+## 🔄 Conceito de RPA
+
+A automação de processos permite que tarefas repetitivas executadas manualmente sejam realizadas por scripts e sistemas de forma automatizada.
+
+Um fluxo de automação pode envolver:
+
+```text
+Entrada de dados
+      ↓
+Processamento
+      ↓
+Consulta / API
+      ↓
+Tratamento das informações
+      ↓
+Excel / Sistema / Formulário
+      ↓
+Resultado automatizado
+```
+
+A ideia é reduzir tarefas manuais e criar processos mais consistentes e reproduzíveis.
+
+---
+
+## 📈 Evolução
+
+Este repositório faz parte da minha jornada de desenvolvimento com Python e automação.
+
+A evolução dos projetos acompanha o aprendizado de novas tecnologias e conceitos, buscando sair de scripts isolados e avançar gradualmente para **processos automatizados mais estruturados**.
 
 ---
 
 ## 🎯 Objetivos
 
-- Desenvolver automações utilizando Python
-- Automatizar tarefas repetitivas
-- Controlar mouse e teclado programaticamente
-- Automatizar aplicações do Windows
-- Trabalhar com Excel e arquivos
-- Automatizar processos envolvendo navegadores
-- Desenvolver soluções de RPA para situações reais
-- Criar projetos práticos para portfólio
+Continuar evoluindo em:
+
+- Automação de processos
+- RPA
+- Python
+- APIs
+- Banco de dados
+- Backend
+- Integração entre sistemas
+- Automação de tarefas repetitivas
+- Desenvolvimento de soluções práticas
 
 ---
 
-## 🛠️ Tecnologias e Bibliotecas
+## 🛠️ Próximos passos
 
-- **Python**
-- **PyAutoGUI**
-- **Git**
-- **GitHub**
-- **VS Code**
+O repositório continuará sendo atualizado conforme novos conhecimentos e projetos forem desenvolvidos.
 
-Outras bibliotecas e ferramentas serão adicionadas ao repositório conforme os estudos avançarem.
-
----
-
-## 📚 Conteúdo do Repositório
-
-### 🖱️ PyAutoGUI
-
-| Projeto | Descrição |
-|---|---|
-| Controle do Mouse | Movimentação e controle do mouse |
-| Navegação Automática | Abertura de aplicações e navegação automatizada |
-| Controle de Aplicações | Abertura, interação e fechamento de aplicações |
-| Menu de Seleção | Automação de diferentes aplicações a partir da escolha do usuário |
-
----
-
-## 📂 Estrutura
-
-```text
-PythonRPA/
-│
-├── .gitignore
-├── README.md
-│
-├── Controle do Mouse com PyAutoGUI.py
-├── Abertura de Aplicações e Navegação Automática.py
-├── Abertura e Controle de Aplicações com PyAutoGUI.py
-└── Automação de Aplicações com Menu de Seleção.py
-```
-
-A estrutura será atualizada conforme novos projetos de automação forem adicionados.
-
----
-
-## 🚀 Evolução dos Estudos
-
-Este repositório acompanha minha evolução no estudo de **Python aplicado à automação e RPA**.
-
-Os projetos começam com automações simples e evoluem gradualmente para processos mais completos, envolvendo:
-
-```text
-Python
-   ↓
-Automação de tarefas
-   ↓
-PyAutoGUI
-   ↓
-Arquivos e documentos
-   ↓
-Excel / CSV
-   ↓
-Web / Navegadores
-   ↓
-Integração com sistemas
-   ↓
-RPA
-   ↓
-Projetos reais
-```
-
----
-
-## 📌 Projetos Futuros
-
-Alguns dos próximos projetos planejados incluem:
-
-- Automação de arquivos e pastas
-- Automação de planilhas Excel
-- Geração de relatórios
-- Automação de processos Web
-- Web Scraping
-- Automação de formulários
-- Integração com APIs
-- Automação de relatórios de estoque
-- Projetos completos de RPA
+A proposta é evoluir gradualmente de automações simples para soluções cada vez mais estruturadas, integrando **Python, APIs, bancos de dados e sistemas**.
 
 ---
 
@@ -110,16 +145,8 @@ Alguns dos próximos projetos planejados incluem:
 
 **Henrique Oliveira**
 
-Estudos e projetos voltados para:
-
-- Python
-- Desenvolvimento de sistemas
-- Automação
-- RPA
-- APIs
-- Banco de dados
-- Sistemas e tecnologia
+Estudante de **Análise e Desenvolvimento de Sistemas**, com foco no desenvolvimento de soluções utilizando Python, automação, APIs, bancos de dados e backend.
 
 ---
 
-> Este repositório faz parte da minha jornada de aprendizado em Python, automação e desenvolvimento de sistemas.
+⭐ Este repositório está em evolução contínua.
