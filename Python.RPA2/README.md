@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # 🤖 Python RPA — Automação de Processos
 
 Repositório dedicado ao desenvolvimento de projetos, exercícios e estudos de **RPA (Robotic Process Automation)** utilizando Python.
@@ -250,4 +249,4 @@ Estudos e projetos voltados para:
 ---
 
 > Este repositório faz parte da minha jornada de aprendizado em Python, automação e desenvolvimento de sistemas.
->>>>>>> Stashed changes
+
